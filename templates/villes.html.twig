@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<h1>Liste de toutes les villes</h1>
+
+	{% for ville in data %}
+		<div class="mb-2">
+			<p>N°{{ville.id}}
+				-
+				<a href="{{path('ville', {'id': ville.id})}}">
+					<b>{{ville.nom}}</b>
+				</a>
+				{# ({{ville.codepostal}})
+												      | INSEE:
+												      {{ville.codeinsee}}
+												      -
+												      {{ville.population2010}} #}
+				{# <small>habitants en 2010</small> #}
+			</p>
+		</div>
+
+	{% endfor %}
+
+	{{ knp_pagination_render(data, 'pagination.html.twig') }}
+
+{% endblock %}
